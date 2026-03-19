@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> - Emotional Guidance System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .slider-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .slider-item {
+            margin-bottom: 15px;
+        }
+
+        .slider-item label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e0e0e0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(102, 126, 234, 0.4);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 5px rgba(102, 126, 234, 0.4);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .result {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .result-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-weight: 600;
+            opacity: 0.8;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .result-value {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .confidence-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: #4ade80;
+            transition: width 0.5s ease;
+        }
+
+        .uncertainty-warning {
+            background: #fbbf24;
+            color: #000;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .message-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 6px;
+            font-style: italic;
+            line-height: 1.6;
+            border-left: 4px solid rgba(255,255,255,0.5);
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .error {
+            color: #ef4444;
+            background: #fee2e2;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: #666;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-button.active {
+            border-bottom-color: #667eea;
+            color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌿 </h1>
+            <p>Understanding Humans → Guiding Them</p>
+        </header>
+
+        <div class="card">
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('predict')">Predict</button>
+                <button class="tab-button" onclick="switchTab('info')">Info</button>
+                <button class="tab-button" onclick="switchTab('stats')">Stats</button>
+            </div>
+
+            <!-- Predict Tab -->
+            <div id="predict-tab" class="tab-content active">
+                <h2>How are you feeling?</h2>
+                <form id="predictionForm">
+                    <div class="input-group">
+                        <label for="journalText">📝 Your Reflection</label>
+                        <textarea id="journalText" placeholder="Share what's on your mind... Even one sentence helps." required></textarea>
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-item">
+                            <label for="stressSlider">
+                                Stress Level
+                                <span id="stressValue">3</span>/5
+                            </label>
+                            <input type="range" id="stressSlider" min="1" max="5" value="3" oninput="updateValue('stress')">
+                        </div>
+
+                        <div class="slider-item">
+                            <label for="energySlider">
+                                Energy Level
+                                <span id="energyValue">3</span>/5
+                            </label>
+                            <input type="range" id="energySlider" min="1" max="5" value="3" oninput="updateValue('energy')">
+                        </div>
+
+                        <div class="slider-item">
+                            <label for="sleepSlider">
+                                Sleep Hours
+                                <span id="sleepValue">6</span>h
+                            </label>
+                            <input type="range" id="sleepSlider" min="0" max="12" value="6" step="0.5" oninput="updateValue('sleep')">
+                        </div>
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="input-group">
+                            <label for="timeOfDay">Time of Day</label>
+                            <select id="timeOfDay">
+                                <option value="morning">🌅 Morning</option>
+                                <option value="afternoon" selected>☀️ Afternoon</option>
+                                <option value="evening">🌆 Evening</option>
+                                <option value="night">🌙 Night</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="ambience">Last Ambience</label>
+                            <select id="ambience">
+                                <option value="forest">🌲 Forest</option>
+                                <option value="ocean" selected>🌊 Ocean</option>
+                                <option value="rain">🌧️ Rain</option>
+                                <option value="mountain">⛰️ Mountain</option>
+                                <option value="café">☕ Café</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn-primary">Get Guidance</button>
+                        <button type="reset" class="btn-secondary">Clear</button>
+                    </div>
+                </form>
+
+                <div class="error" id="error"></div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 10px;">Analyzing your reflection...</p>
+                </div>
+
+                <div class="result" id="result">
+                    <div class="result-item">
+                        <div class="result-label">📊 Your Emotional State</div>
+                        <div class="result-value" id="state">--</div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="result-label">⚡ Intensity</div>
+                        <div class="result-value" id="intensity">-- / 5</div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="result-label">🎯 Confidence</div>
+                        <div class="result-value" id="confidence">--%</div>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="confidenceFill"></div>
+                        </div>
+                        <div class="uncertainty-warning" id="uncertainWarning" style="display:none;">
+                            ⚠️ Low confidence - take this recommendation as a suggestion
+                        </div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="result-label">✅ What You Should Do</div>
+                        <div class="result-value" id="action">--</div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="result-label">⏰ When to Do It</div>
+                        <div class="result-value" id="timing">--</div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="message-box" id="message">
+                            --
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Tab -->
+            <div id="info-tab" class="tab-content">
+                <h2>About </h2>
+                <p style="margin-bottom: 20px; line-height: 1.8;">
+                     is an AI system that understands your emotional state and guides you toward better mental health. 
+                    It combines emotional recognition with personalized recommendations.
+                </p>
+
+                <h3 style="margin-top: 30px; margin-bottom: 15px;">🎯 How It Works</h3>
+                <ol style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Analyzes</strong> your reflection text and contextual signals</li>
+                    <li><strong>Predicts</strong> your emotional state and intensity level</li>
+                    <li><strong>Quantifies</strong> uncertainty to flag when unsure</li>
+                    <li><strong>Recommends</strong> specific actions and optimal timing</li>
+                    <li><strong>Guides</strong> with supportive, conversational messages</li>
+                </ol>
+
+                <h3 style="margin-top: 30px; margin-bottom: 15px;">🧠 Emotional States We Recognize</h3>
+                <div class="stats-grid">
+                    <div class="stat-box" style="border-left-color: #667eea;">😌 Calm</div>
+                    <div class="stat-box" style="border-left-color: #667eea;">🧘 Peaceful</div>
+                    <div class="stat-box" style="border-left-color: #667eea;">💪 Energized</div>
+                    <div class="stat-box" style="border-left-color: #667eea;">🎯 Focused</div>
+                    <div class="stat-box" style="border-left-color: #667eea;">😰 Anxious</div>
+                    <div class="stat-box" style="border-left-color: #667eea;">😫 Overwhelmed</div>
+                    <div class="stat-box" style="border-left-color: #667eea;">😴 Tired</div>
+                    <div class="stat-box" style="border-left-color: #667eea;">🔄 Restless</div>
+                </div>
+
+                <h3 style="margin-top: 30px; margin-bottom: 15px;">💡 Key Features</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>✓ Handles messy, short, or ambiguous text</li>
+                    <li>✓ Quantifies uncertainty (knows what it doesn't know)</li>
+                    <li>✓ Provides personalized, actionable recommendations</li>
+                    <li>✓ Runs locally without cloud APIs</li>
+                    <li>✓ Respectful of privacy and offline-capable</li>
+                </ul>
+            </div>
+
+            <!-- Stats Tab -->
+            <div id="stats-tab" class="tab-content">
+                <h2>Statistics</h2>
+                <p style="margin-bottom: 20px;">Aggregated insights from system usage</p>
+
+                <div class="stats-grid" id="statsContainer">
+                    <div class="stat-box">
+                        <div class="stat-number" id="totalPreds">--</div>
+                        <div class="stat-label">Total Predictions</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="avgConf">--</div>
+                        <div class="stat-label">Avg Confidence</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="certainRate">--</div>
+                        <div class="stat-label">Certain Rate</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px; margin-bottom: 15px;">Top Emotional States</h3>
+                <div id="stateStats"></div>
+
+                <h3 style="margin-top: 30px; margin-bottom: 15px;">Top Recommendations</h3>
+                <div id="actionStats"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>🌿 : From Understanding Humans → To Guiding Them</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Built with care for human wellbeing</p>
+        </footer>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8000';
+
+        function updateValue(type) {
+            const slider = document.getElementById(type + 'Slider');
+            const value = document.getElementById(type + 'Value');
+            value.textContent = slider.value;
+        }
+
+        function switchTab(tab) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tab + '-tab').classList.add('active');
+            event.target.classList.add('active');
+
+            // Load stats if stats tab
+            if (tab === 'stats') loadStats();
+        }
+
+        document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const journalText = document.getElementById('journalText').value;
+            const stressLevel = parseInt(document.getElementById('stressSlider').value);
+            const energyLevel = parseInt(document.getElementById('energySlider').value);
+            const sleepHours = parseFloat(document.getElementById('sleepSlider').value);
+            const timeOfDay = document.getElementById('timeOfDay').value;
+            const ambienceType = document.getElementById('ambience').value;
+
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+
+            try {
+                const response = await fetch(`${API_URL}/predict`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        journal_text: journalText,
+                        stress_level: stressLevel,
+                        energy_level: energyLevel,
+                        sleep_hours: sleepHours,
+                        time_of_day: timeOfDay,
+                        ambience_type: ambienceType,
+                        reflection_quality: 'clear',
+                    })
+                });
+
+                if (!response.ok) throw new Error('Prediction failed');
+                const data = await response.json();
+
+                // Display results
+                displayResults(data);
+            } catch (error) {
+                document.getElementById('error').textContent = 'Error: ' + error.message;
+                document.getElementById('error').style.display = 'block';
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        });
+
+        function displayResults(data) {
+            document.getElementById('state').textContent = data.predicted_state.toUpperCase();
+            document.getElementById('intensity').textContent = data.predicted_intensity + ' / 5';
+            
+            const confidence = Math.round(data.confidence * 100);
+            document.getElementById('confidence').textContent = confidence + '%';
+            document.getElementById('confidenceFill').style.width = confidence + '%';
+
+            document.getElementById('action').textContent = formatText(data.what_to_do);
+            document.getElementById('timing').textContent = formatText(data.when_to_do);
+            document.getElementById('message').textContent = data.supportive_message;
+
+            // Show uncertainty warning if needed
+            if (data.uncertain_flag === 1) {
+                document.getElementById('uncertainWarning').style.display = 'block';
+            } else {
+                document.getElementById('uncertainWarning').style.display = 'none';
+            }
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function formatText(text) {
+            return text.replace(/_/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+        }
+
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_URL}/stats`);
+                const data = await response.json();
+
+                document.getElementById('totalPreds').textContent = data.total_predictions;
+                document.getElementById('avgConf').textContent = (data.average_confidence * 100).toFixed(0) + '%';
+                document.getElementById('certainRate').textContent = ((1 - data.uncertain_rate) * 100).toFixed(0) + '%';
+
+                // State stats
+                let stateHtml = '<ul style="margin-left: 20px; line-height: 2;">';
+                for (const [state, count] of Object.entries(data.state_distribution)) {
+                    stateHtml += `<li>${formatText(state)}: ${count} times</li>`;
+                }
+                stateHtml += '</ul>';
+                document.getElementById('stateStats').innerHTML = stateHtml;
+
+                // Action stats
+                let actionHtml = '<ul style="margin-left: 20px; line-height: 2;">';
+                for (const [action, count] of Object.entries(data.top_recommendations)) {
+                    actionHtml += `<li>${formatText(action)}: ${count} times</li>`;
+                }
+                actionHtml += '</ul>';
+                document.getElementById('actionStats').innerHTML = actionHtml;
+            } catch (error) {
+                console.error('Failed to load stats:', error);
+            }
+        }
+
+        // Set default values on load
+        function initializeUI() {
+            updateValue('stress');
+            updateValue('energy');
+            updateValue('sleep');
+            console.log(' UI initialized');
+        }
+
+        window.addEventListener('load', initializeUI);
+    </script>
+</body>
+</html>

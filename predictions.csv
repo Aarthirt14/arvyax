@@ -1,0 +1,121 @@
+id,predicted_state,predicted_intensity,confidence,uncertain_flag,what_to_do,when_to_do,supportive_message
+10001,focused,4,0.29417354,1,deep_work,within_15_min,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10002,mixed,1,0.5530485,1,pause,later_today,You're feeling mixed. Try a short break later today to help yourself feel better.
+10003,calm,2,0.40870774,1,rest,tonight,You're feeling calm. Try rest and recovery tonight to help yourself feel better.
+10004,calm,5,0.56887877,1,pause,within_15_min,You're feeling calm. Try a short break in the next 15 minutes to help yourself feel better.
+10005,neutral,5,0.4140439,1,rest,later_today,You're feeling neutral. Try rest and recovery later today to help yourself feel better.
+10006,mixed,5,0.6121432,1,pause,rest,You're feeling mixed. Try a short break rest to help yourself feel better.
+10007,neutral,5,0.36924848,1,pause,within_15_min,You're feeling neutral. Try a short break in the next 15 minutes to help yourself feel better.
+10008,mixed,1,0.31863737,1,rest,later_today,You're feeling mixed. Try rest and recovery later today to help yourself feel better.
+10009,restless,4,0.34349322,1,grounding,within_15_min,You're feeling restless. Try a grounding technique to reconnect with the present in the next 15 minutes to help yourself feel better.
+10010,overwhelmed,2,0.45887655,1,pause,tonight,You're feeling overwhelmed. Try a short break tonight to help yourself feel better.
+10011,neutral,3,0.44145817,1,pause,within_15_min,You're feeling neutral. Try a short break in the next 15 minutes to help yourself feel better.
+10012,focused,3,0.3900103,1,pause,later_today,You're feeling focused. Try a short break later today to help yourself feel better.
+10013,restless,2,0.3139109,1,pause,later_today,You're feeling restless. Try a short break later today to help yourself feel better.
+10014,overwhelmed,5,0.32675612,1,grounding,now,"Things feel like a lot right now. Let's ground yourself with the 5-4-3-2-1 technique. Notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste."
+10015,focused,1,0.44927037,1,deep_work,rest,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10016,neutral,1,0.4779361,1,movement,tonight,You're in a stable place. A bit of movement or a short walk in the next 15 minutes could help you feel more grounded.
+10017,mixed,3,0.734928,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.
+10018,mixed,2,0.6060607,1,pause,tonight,You're feeling mixed. Try a short break tonight to help yourself feel better.
+10019,restless,2,0.42016417,1,pause,later_today,You're feeling restless. Try a short break later today to help yourself feel better.
+10020,calm,2,0.3493963,1,pause,tonight,You're feeling calm. Try a short break tonight to help yourself feel better.
+10021,restless,5,0.49738574,1,grounding,within_15_min,You're feeling restless. Try a grounding technique to reconnect with the present in the next 15 minutes to help yourself feel better.
+10022,focused,5,0.30969015,1,deep_work,now,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10023,mixed,2,0.39901847,1,rest,tonight,You're feeling mixed. Try rest and recovery tonight to help yourself feel better.
+10024,calm,5,0.29361936,1,rest,tonight,You're feeling calm. Try rest and recovery tonight to help yourself feel better.
+10025,calm,1,0.29116583,1,rest,within_15_min,You're feeling calm. Try rest and recovery in the next 15 minutes to help yourself feel better.
+10026,restless,1,0.71100974,1,pause,within_15_min,You're feeling restless. Try a short break in the next 15 minutes to help yourself feel better.
+10027,calm,4,0.31786954,1,pause,tonight,You're feeling calm. Try a short break tonight to help yourself feel better.
+10028,restless,4,0.32647663,1,box_breathing,later_today,You're feeling restless. Try a controlled breathing exercise later today to help yourself feel better.
+10029,restless,2,0.6336518,1,grounding,later_today,You're feeling restless. Try a grounding technique to reconnect with the present later today to help yourself feel better.
+10030,restless,5,0.52814555,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10031,overwhelmed,3,0.33536637,1,pause,within_15_min,You're feeling overwhelmed. Try a short break in the next 15 minutes to help yourself feel better.
+10032,calm,2,0.5110097,1,journaling,tonight,You're in a peaceful state. Try journaling to explore your thoughts more deeply when you have time later.
+10033,overwhelmed,1,0.4773696,1,grounding,within_15_min,"Things feel like a lot right now. Let's ground yourself with the 5-4-3-2-1 technique. Notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste."
+10034,overwhelmed,3,0.41733956,1,grounding,within_15_min,"Things feel like a lot right now. Let's ground yourself with the 5-4-3-2-1 technique. Notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste."
+10035,neutral,4,0.30041838,1,movement,now,You're in a stable place. A bit of movement or a short walk in the next 15 minutes could help you feel more grounded.
+10036,restless,4,0.63135207,1,grounding,within_15_min,You're feeling restless. Try a grounding technique to reconnect with the present in the next 15 minutes to help yourself feel better.
+10037,mixed,1,0.56034076,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.
+10038,focused,4,0.31752977,1,deep_work,within_15_min,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10039,overwhelmed,1,0.3972515,1,grounding,tonight,"Things feel like a lot right now. Let's ground yourself with the 5-4-3-2-1 technique. Notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste."
+10040,mixed,1,0.3464132,1,pause,tonight,You're feeling mixed. Try a short break tonight to help yourself feel better.
+10041,focused,3,0.5624165,1,deep_work,rest,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10042,restless,4,0.32722256,1,box_breathing,later_today,You're feeling restless. Try a controlled breathing exercise later today to help yourself feel better.
+10043,mixed,3,0.31107756,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.
+10044,mixed,1,0.31437948,1,pause,tonight,You're feeling mixed. Try a short break tonight to help yourself feel better.
+10045,restless,5,0.46320686,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10046,restless,5,0.43321264,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10047,mixed,1,0.52129173,1,pause,now,You're feeling mixed. Try a short break right now to help yourself feel better.
+10048,overwhelmed,3,0.49808714,1,pause,within_15_min,You're feeling overwhelmed. Try a short break in the next 15 minutes to help yourself feel better.
+10049,restless,4,0.32515043,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10050,neutral,4,0.55840605,1,light_planning,within_15_min,You're feeling neutral. Try organizing your tasks in the next 15 minutes to help yourself feel better.
+10051,restless,2,0.35915792,1,pause,later_today,You're feeling restless. Try a short break later today to help yourself feel better.
+10052,calm,5,0.4157666,1,sound_therapy,rest,You're feeling calm. Try calming music or nature sounds rest to help yourself feel better.
+10053,restless,5,0.4551081,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10054,neutral,4,0.28742784,1,movement,within_15_min,You're in a stable place. A bit of movement or a short walk in the next 15 minutes could help you feel more grounded.
+10055,mixed,4,0.26677394,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.
+10056,overwhelmed,4,0.2964278,1,box_breathing,now,You're feeling overwhelmed. Try a controlled breathing exercise right now to help yourself feel better.
+10057,overwhelmed,5,0.60032654,1,box_breathing,now,You're feeling overwhelmed. Try a controlled breathing exercise right now to help yourself feel better.
+10058,focused,4,0.33305073,1,deep_work,within_15_min,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10059,mixed,5,0.7321059,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.
+10060,restless,1,0.38092828,1,pause,tonight,You're feeling restless. Try a short break tonight to help yourself feel better.
+10061,calm,5,0.54908705,1,yoga,tonight,You're feeling calm. Try gentle stretching or yoga tonight to help yourself feel better.
+10062,restless,4,0.28638244,1,grounding,within_15_min,You're feeling restless. Try a grounding technique to reconnect with the present in the next 15 minutes to help yourself feel better.
+10063,mixed,5,0.34917527,1,pause,later_today,You're feeling mixed. Try a short break later today to help yourself feel better.
+10064,restless,5,0.29828715,1,box_breathing,rest,You're feeling restless. Try a controlled breathing exercise rest to help yourself feel better.
+10065,overwhelmed,5,0.420442,1,box_breathing,now,You're feeling overwhelmed. Try a controlled breathing exercise right now to help yourself feel better.
+10066,overwhelmed,5,0.24166626,1,box_breathing,now,You're feeling overwhelmed. Try a controlled breathing exercise right now to help yourself feel better.
+10067,restless,4,0.33401623,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10068,calm,5,0.29661274,1,yoga,now,You're feeling calm. Try gentle stretching or yoga right now to help yourself feel better.
+10069,overwhelmed,2,0.34518564,1,pause,tonight,You're feeling overwhelmed. Try a short break tonight to help yourself feel better.
+10070,neutral,2,0.50770855,1,light_planning,tonight,You're feeling neutral. Try organizing your tasks tonight to help yourself feel better.
+10071,neutral,4,0.30328315,1,rest,rest,You're feeling neutral. Try rest and recovery rest to help yourself feel better.
+10072,neutral,4,0.35253042,1,light_planning,within_15_min,You're feeling neutral. Try organizing your tasks in the next 15 minutes to help yourself feel better.
+10073,restless,5,0.5363426,1,grounding,within_15_min,You're feeling restless. Try a grounding technique to reconnect with the present in the next 15 minutes to help yourself feel better.
+10074,mixed,4,0.6810965,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.
+10075,neutral,1,0.28163332,1,light_planning,within_15_min,You're feeling neutral. Try organizing your tasks in the next 15 minutes to help yourself feel better.
+10076,mixed,1,0.44989297,1,rest,within_15_min,You're feeling mixed. Try rest and recovery in the next 15 minutes to help yourself feel better.
+10077,restless,5,0.42510492,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10078,calm,3,0.37357336,1,sound_therapy,within_15_min,You're feeling calm. Try calming music or nature sounds in the next 15 minutes to help yourself feel better.
+10079,restless,4,0.52149355,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10080,focused,1,0.31032276,1,deep_work,tonight,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10081,neutral,5,0.6094953,1,rest,within_15_min,You're feeling neutral. Try rest and recovery in the next 15 minutes to help yourself feel better.
+10082,focused,2,0.4018146,1,deep_work,later_today,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10083,calm,4,0.35241598,1,yoga,within_15_min,You're feeling calm. Try gentle stretching or yoga in the next 15 minutes to help yourself feel better.
+10084,overwhelmed,5,0.45886678,1,grounding,now,"Things feel like a lot right now. Let's ground yourself with the 5-4-3-2-1 technique. Notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste."
+10085,restless,1,0.42300415,1,pause,tonight,You're feeling restless. Try a short break tonight to help yourself feel better.
+10086,neutral,4,0.414999,1,light_planning,within_15_min,You're feeling neutral. Try organizing your tasks in the next 15 minutes to help yourself feel better.
+10087,mixed,4,0.5940615,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.
+10088,neutral,5,0.41825825,1,movement,now,You're in a stable place. A bit of movement or a short walk in the next 15 minutes could help you feel more grounded.
+10089,calm,3,0.56551564,1,pause,tonight,You're feeling calm. Try a short break tonight to help yourself feel better.
+10090,neutral,5,0.38297957,1,movement,within_15_min,You're in a stable place. A bit of movement or a short walk in the next 15 minutes could help you feel more grounded.
+10091,restless,5,0.44581616,1,grounding,within_15_min,You're feeling restless. Try a grounding technique to reconnect with the present in the next 15 minutes to help yourself feel better.
+10092,focused,5,0.36353418,1,deep_work,within_15_min,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10093,mixed,3,0.75518334,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.
+10094,focused,1,0.5399567,1,rest,within_15_min,You're feeling focused. Try rest and recovery in the next 15 minutes to help yourself feel better.
+10095,restless,4,0.5956373,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10096,calm,4,0.33451158,1,pause,later_today,You're feeling calm. Try a short break later today to help yourself feel better.
+10097,restless,4,0.46339375,1,box_breathing,within_15_min,You're feeling restless. Try a controlled breathing exercise in the next 15 minutes to help yourself feel better.
+10098,overwhelmed,5,0.6652576,1,grounding,now,"Things feel like a lot right now. Let's ground yourself with the 5-4-3-2-1 technique. Notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste."
+10099,mixed,1,0.35161567,1,rest,within_15_min,You're feeling mixed. Try rest and recovery in the next 15 minutes to help yourself feel better.
+10100,calm,2,0.29565302,1,journaling,now,You're in a peaceful state. Try journaling to explore your thoughts more deeply when you have time later.
+10101,overwhelmed,4,0.5251124,1,box_breathing,now,You're feeling overwhelmed. Try a controlled breathing exercise right now to help yourself feel better.
+10102,mixed,4,0.3227762,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.
+10103,calm,5,0.7093727,1,rest,later_today,You're feeling calm. Try rest and recovery later today to help yourself feel better.
+10104,neutral,5,0.48172772,1,rest,within_15_min,You're feeling neutral. Try rest and recovery in the next 15 minutes to help yourself feel better.
+10105,overwhelmed,5,0.36828843,1,box_breathing,now,You're feeling overwhelmed. Try a controlled breathing exercise right now to help yourself feel better.
+10106,focused,5,0.43281323,1,light_planning,within_15_min,You're feeling focused. Try organizing your tasks in the next 15 minutes to help yourself feel better.
+10107,focused,4,0.37758696,1,pause,later_today,You're feeling focused. Try a short break later today to help yourself feel better.
+10108,overwhelmed,5,0.40796143,1,box_breathing,now,You're feeling overwhelmed. Try a controlled breathing exercise right now to help yourself feel better.
+10109,neutral,4,0.34075376,1,light_planning,within_15_min,You're feeling neutral. Try organizing your tasks in the next 15 minutes to help yourself feel better.
+10110,mixed,1,0.4813748,1,rest,tonight,You're feeling mixed. Try rest and recovery tonight to help yourself feel better.
+10111,restless,4,0.32677403,1,box_breathing,rest,You're feeling restless. Try a controlled breathing exercise rest to help yourself feel better.
+10112,mixed,4,0.61271936,1,pause,later_today,You're feeling mixed. Try a short break later today to help yourself feel better.
+10113,neutral,4,0.34204978,1,rest,rest,You're feeling neutral. Try rest and recovery rest to help yourself feel better.
+10114,restless,2,0.35773432,1,grounding,later_today,You're feeling restless. Try a grounding technique to reconnect with the present later today to help yourself feel better.
+10115,calm,4,0.7145791,1,yoga,tonight,You're feeling calm. Try gentle stretching or yoga tonight to help yourself feel better.
+10116,focused,1,0.52423465,1,deep_work,tonight,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10117,overwhelmed,5,0.5966916,1,box_breathing,now,You're feeling overwhelmed. Try a controlled breathing exercise right now to help yourself feel better.
+10118,focused,3,0.3710528,1,deep_work,within_15_min,You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+10119,overwhelmed,4,0.49577045,1,grounding,now,"Things feel like a lot right now. Let's ground yourself with the 5-4-3-2-1 technique. Notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste."
+10120,mixed,4,0.64364624,1,pause,within_15_min,You're feeling mixed. Try a short break in the next 15 minutes to help yourself feel better.

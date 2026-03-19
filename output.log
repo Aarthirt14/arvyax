@@ -1,0 +1,134 @@
+
+================================================================================
+                     EMOTIONAL UNDERSTANDING SYSTEM
+               Building Human-Centered AI Guidance
+================================================================================
+
+
+======================================================================
+ EMOTIONAL UNDERSTANDING SYSTEM - FULL PIPELINE
+======================================================================
+Loading data...
+Training data: (1080, 13)
+Test data: (120, 11)
+
+Engineering features...
+Feature vectors shape: (1080, 70)
+Features: 70
+
+======================================================================
+TRAINING MODELS
+======================================================================
+
+1. Training Emotional State Classifier
+--------------------------------------------------
+Validation Accuracy: 0.4352
+Classes: ['calm' 'focused' 'mixed' 'neutral' 'overwhelmed' 'restless']
+
+2. Training Intensity Predictor (Classification)
+--------------------------------------------------
+Validation MAE: 1.4676
+Validation RMSE: 1.8844
+
+Models saved to models
+
+======================================================================
+GENERATING PREDICTIONS
+======================================================================
+
+Predicting emotional states...
+Predicting intensities...
+Quantifying uncertainty...
+
+Predictions generated: 120
+Uncertain samples: 120 (100.0%)
+
+======================================================================
+APPLYING DECISION ENGINE
+======================================================================
+Actions assigned: 10 types
+Timing assigned: 5 options
+
+======================================================================
+FEATURE IMPORTANCE ANALYSIS
+======================================================================
+
+Top 20 Most Important Features:
+    feature  importance
+24  text_24    0.034006
+22  text_22    0.032665
+45  text_45    0.032586
+56  text_56    0.030597
+18  text_18    0.029672
+49  text_49    0.022933
+32  text_32    0.021452
+33  text_33    0.020723
+23  text_23    0.020504
+39  text_39    0.019810
+9    text_9    0.018988
+6    text_6    0.018125
+46  text_46    0.017737
+8    text_8    0.017606
+7    text_7    0.017243
+40  text_40    0.017014
+10  text_10    0.016883
+55  text_55    0.016863
+13  text_13    0.016460
+35  text_35    0.015148
+
+Text Features Importance: 88.8%
+Metadata Features Importance: 11.2%
+
+Predictions saved to predictions.csv
+
+Sample predictions:
+      id predicted_state  predicted_intensity  confidence  uncertain_flag what_to_do     when_to_do                                                                                                                     supportive_message
+0  10001         focused                    4    0.294174               1  deep_work  within_15_min                        You're in a focused state! Use this window of clarity for your important work. Strike while you're in the zone.
+1  10002           mixed                    1    0.553048               1      pause    later_today                                                      You're feeling mixed. Try a short break later today to help yourself feel better.
+2  10003            calm                    2    0.408708               1       rest        tonight                                                       You're feeling calm. Try rest and recovery tonight to help yourself feel better.
+3  10004            calm                    5    0.568879               1      pause  within_15_min                                            You're feeling calm. Try a short break in the next 15 minutes to help yourself feel better.
+4  10005         neutral                    5    0.414044               1       rest    later_today                                                You're feeling neutral. Try rest and recovery later today to help yourself feel better.
+5  10006           mixed                    5    0.612143               1      pause           rest                                                             You're feeling mixed. Try a short break rest to help yourself feel better.
+6  10007         neutral                    5    0.369248               1      pause  within_15_min                                         You're feeling neutral. Try a short break in the next 15 minutes to help yourself feel better.
+7  10008           mixed                    1    0.318637               1       rest    later_today                                                  You're feeling mixed. Try rest and recovery later today to help yourself feel better.
+8  10009        restless                    4    0.343493               1  grounding  within_15_min  You're feeling restless. Try a grounding technique to reconnect with the present in the next 15 minutes to help yourself feel better.
+9  10010     overwhelmed                    2    0.458877               1      pause        tonight                                                    You're feeling overwhelmed. Try a short break tonight to help yourself feel better.
+
+======================================================================
+PIPELINE COMPLETE
+======================================================================
+python : Traceback (most recent call last):
+At line:1 char:1
++ python main.py 2>&1 > output.log
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last) 
+   ::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\HP\OneDrive\Attachments\Desktop\assign\main.py", line 38, in 
+main
+    print("\n\u2713 Pipeline execution successful!")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.
+3312.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in 
+position 2: character maps to <undefined>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Attachments\Desktop\assign\main.py", line 112, in 
+<module>
+    success = main()
+  File "C:\Users\HP\OneDrive\Attachments\Desktop\assign\main.py", line 63, in 
+main
+    print(f"\n\u2717 Error during pipeline execution: {e}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.
+3312.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2717' in 
+position 2: character maps to <undefined>

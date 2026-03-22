@@ -2,6 +2,18 @@
 Configuration for  Emotional Understanding System
 """
 
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Environment Settings
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+API_PORT = int(os.getenv('API_PORT', 8000))
+BATCH_SIZE = int(os.getenv('BATCH_SIZE', 32))
+RANDOM_SEED = int(os.getenv('RANDOM_SEED', 42))
+
 # Emotional States
 EMOTIONAL_STATES = [
     'calm', 'content', 'energized', 'peaceful', 'focused',

@@ -20,20 +20,27 @@ class DataLoader:
                          energy_level, stress_level, time_of_day, previous_day_mood,
                          face_emotion_hint, reflection_quality, emotional_state, intensity
         """
-        if csv_path and Path(csv_path).exists():
-            if csv_path.endswith('.xlsx') or csv_path.endswith('.xls'):
-                df = pd.read_excel(csv_path)
+        try:
+            if csv_path and Path(csv_path).exists():
+                if csv_path.endswith('.xlsx') or csv_path.endswith('.xls'):
+                    df = pd.read_excel(csv_path)
+                else:
+                    df = pd.read_csv(csv_path)
             else:
-                df = pd.read_csv(csv_path)
-        else:
-            # Try to load from standard location
-            excel_path = self.data_dir.parent / 'Sample__reflective_dataset.xlsx'
-            if excel_path.exists():
-                df = pd.read_excel(excel_path)
-            else:
-                df = self.generate_synthetic_data(n_samples=500, seed=42)
-        
-        return self.validate_and_clean_data(df)
+                # Try to load from standard location
+                excel_path = self.data_dir.parent / 'Sample__reflective_dataset.xlsx'
+                if excel_path.exists():
+                    df = pd.read_excel(excel_path)
+                else:
+                    df = self.generate_synthetic_data(n_samples=500, seed=42)
+            
+            if df is None or df.empty:
+                raise ValueError("Data loading resulted in empty dataset")
+            
+            return self.validate_and_clean_data(df)
+        except Exception as e:
+            print(f"Error loading training data: {e}")
+            return self.generate_synthetic_data(n_samples=500, seed=42)
     
     def load_test_data(self, csv_path=None):
         """Load test data - note: may not have emotional_state and intensity"""

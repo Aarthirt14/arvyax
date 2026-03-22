@@ -8,12 +8,21 @@ import pandas as pd
 from pathlib import Path
 import joblib
 import warnings
+import logging
+from datetime import datetime
 warnings.filterwarnings('ignore')
 
 from data_loader import DataLoader
 from feature_engineering import FeatureEngineer, prepare_datasets
 from models import EmotionalStateClassifier, IntensityPredictor, UncertaintyQuantifier
 from decision_engine import batch_decide
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 
 class Pipeline:
@@ -35,19 +44,21 @@ class Pipeline:
         self.test_data = None
         self.predictions = None
         
+        logger.info(f"Pipeline initialized with output directory: {self.output_dir}")
+        
     def load_data(self, train_path=None, test_path=None):
         """Load training and test data"""
-        print("Loading data...")
+        logger.info("Starting data loading...")
         self.train_data = self.data_loader.load_training_data(train_path)
         self.test_data = self.data_loader.load_test_data(test_path)
         
-        print(f"Training data: {self.train_data.shape}")
-        print(f"Test data: {self.test_data.shape}")
+        logger.info(f"Training data shape: {self.train_data.shape}")
+        logger.info(f"Test data shape: {self.test_data.shape}")
         return self
     
     def prepare_features(self):
         """Engineer features from raw data"""
-        print("\nEngineering features...")
+        logger.info("Starting feature engineering...")
         
         X_train, X_test, y_state, y_intensity, self.feature_engineer = prepare_datasets(
             self.train_data, self.test_data

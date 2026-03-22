@@ -42,6 +42,14 @@ class DecisionEngine:
             }
         """
         
+        # Validate inputs
+        if not emotional_state or intensity is None:
+            raise ValueError("emotional_state and intensity are required")
+        if not (1 <= intensity <= 5):
+            intensity = max(1, min(5, int(intensity)))
+        if not (1 <= stress_level <= 5) or not (1 <= energy_level <= 5):
+            raise ValueError("stress_level and energy_level must be between 1-5")
+        
         # Determine action
         action = self._decide_action(
             emotional_state, intensity, stress_level, energy_level

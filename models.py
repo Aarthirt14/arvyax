@@ -21,20 +21,34 @@ import xgboost as xgb
 import joblib
 from pathlib import Path
 import warnings
+import logging
 warnings.filterwarnings('ignore')
+
+logger = logging.getLogger(__name__)
 
 
 class EmotionalStateClassifier:
     """Classifier for emotional_state (multi-class classification)"""
     
     def __init__(self, model_type='xgboost'):
+        if model_type not in ['xgboost', 'random_forest', 'gradient_boosting']:
+            raise ValueError(f"Unsupported model type: {model_type}")
+        
         self.model_type = model_type
         self.model = None
         self.label_encoder = LabelEncoder()
         self.classes_ = None
+        logger.info(f"Initialized EmotionalStateClassifier with model_type: {model_type}")
         
     def fit(self, X_train, y_train):
         """Train the model"""
+        if X_train is None or len(X_train) == 0:
+            raise ValueError("Training data cannot be empty")
+        if y_train is None or len(y_train) == 0:
+            raise ValueError("Training labels cannot be empty")
+        
+        logger.info(f"Training with {len(X_train)} samples")
+        
         # Encode labels
         y_train_encoded = self.label_encoder.fit_transform(y_train)
         self.classes_ = self.label_encoder.classes_

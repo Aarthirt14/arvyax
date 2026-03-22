@@ -8,9 +8,18 @@ import requests
 import json
 import time
 from pathlib import Path
+import sys
+from typing import Dict, Any
 
 API_BASE = "http://localhost:8000"
 TIMEOUT = 10
+
+# Test Results
+test_results = {
+    'passed': 0,
+    'failed': 0,
+    'errors': []
+}
 
 
 def print_section(title):
@@ -19,17 +28,34 @@ def print_section(title):
     print(f"{'='*70}\n")
 
 
+def log_result(test_name: str, passed: bool, error: str = None):
+    """Log test result"""
+    global test_results
+    if passed:
+        test_results['passed'] += 1
+        print(f"✓ {test_name}: PASS")
+    else:
+        test_results['failed'] += 1
+        print(f"✗ {test_name}: FAIL")
+        if error:
+            print(f"  Error: {error}")
+            test_results['errors'].append((test_name, error))
+
+
 def test_health():
     """Test health check endpoint"""
     print_section("TEST 1: HEALTH CHECK")
     try:
         response = requests.get(f"{API_BASE}/health", timeout=TIMEOUT)
-        print(f"Status Code: {response.status_code}")
-        data = response.json()
-        print(f"Response: {json.dumps(data, indent=2)}")
-        return response.status_code == 200
+        success = response.status_code == 200
+        log_result("Health Check", success, 
+                  None if success else f"Status: {response.status_code}")
+        if success:
+            data = response.json()
+            print(f"Response: {json.dumps(data, indent=2)}")
+        return success
     except Exception as e:
-        print(f"✗ Error: {e}")
+        log_result("Health Check", False, str(e))
         return False
 
 

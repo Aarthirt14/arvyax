@@ -48,6 +48,18 @@ class PredictionRequest(BaseModel):
     time_of_day: Optional[str] = "afternoon"
     previous_day_mood: Optional[str] = "calm"
     face_emotion_hint: Optional[str] = "none"
+    
+    def validate_inputs(self):
+        """Validate request parameters"""
+        if not self.journal_text or len(self.journal_text.strip()) == 0:
+            raise ValueError("journal_text cannot be empty")
+        if self.stress_level < 1 or self.stress_level > 5:
+            raise ValueError("stress_level must be between 1 and 5")
+        if self.energy_level < 1 or self.energy_level > 5:
+            raise ValueError("energy_level must be between 1 and 5")
+        if self.sleep_hours < 0 or self.sleep_hours > 24:
+            raise ValueError("sleep_hours must be between 0 and 24")
+        return True
     reflection_quality: Optional[str] = "clear"  # clear, vague, or conflicted
 
 class PredictionResponse(BaseModel):

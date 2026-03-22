@@ -10,6 +10,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import re
 from collections import Counter
 import warnings
+from functools import lru_cache
 warnings.filterwarnings('ignore')
 
 
@@ -19,12 +20,17 @@ class FeatureEngineer:
         self.scalers = {}
         self.encoders = {}
         self.feature_names = []
+        self._feature_cache = {}  # Cache computed features
+        self._cache_enabled = True
         
     def fit_transform(self, df, is_test=False):
         """
         Fit and transform features from dataframe
         is_test=True means we won't try to extract emotional_state/intensity
         """
+        # Clear cache on new data
+        self._feature_cache.clear()
+        
         # Extract text features
         text_features = self._extract_text_features(df)
         
